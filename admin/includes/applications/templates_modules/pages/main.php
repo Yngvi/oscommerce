@@ -46,9 +46,10 @@
     $class = 'osC_' . ucfirst($_GET['set']) . '_' . $code;
 
    if ( class_exists($class) ) {
-      if ( call_user_func(array($class, 'isInstalled'), $code, $_GET['set']) === false ) {
+     // JAL: we need the language strings whether or not the class is installed...
+//      if ( call_user_func(array($class, 'isInstalled'), $code, $_GET['set']) === false ) {
         $osC_Language->injectDefinitions('modules/' . $_GET['set'] . '/' . $code . '.xml');
-      }
+//      }
 
       $module = new $class();
 ?>
