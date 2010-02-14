@@ -30,7 +30,9 @@
     if ($value > 0) $column_list[] = $key;
   }
 
-  if ( ($Qlisting->numberOfRows() > 0) && ( (PREV_NEXT_BAR_LOCATION == '1') || (PREV_NEXT_BAR_LOCATION == '3') ) ) {
+  if ( ($Qlisting->numberOfRows() > 0) &&
+       ($Qlisting->numberOfRows() <= MAX_DISPLAY_PRODUCTS_NEW ) &&
+       ( (PREV_NEXT_BAR_LOCATION == '1') || (PREV_NEXT_BAR_LOCATION == '3') ) ) {
 ?>
 
 <div class="listingPageLinks">
@@ -49,7 +51,7 @@
   if ($Qlisting->numberOfRows() > 0) {
 ?>
 
-  <table border="0" width="100%" cellspacing="0" cellpadding="2">
+  <table border="0" width="100%" cellspacing="0" cellpadding="2" id="productListing">
     <tr>
 
 <?php
@@ -183,7 +185,9 @@
 </div>
 
 <?php
-  if ( ($Qlisting->numberOfRows() > 0) && ((PREV_NEXT_BAR_LOCATION == '2') || (PREV_NEXT_BAR_LOCATION == '3')) ) {
+  if ( ($Qlisting->numberOfRows() > 0) &&
+       ($Qlisting->numberOfRows() <= MAX_DISPLAY_PRODUCTS_NEW ) &&
+       ((PREV_NEXT_BAR_LOCATION == '2') || (PREV_NEXT_BAR_LOCATION == '3')) ) {
 ?>
 
 <div class="listingPageLinks">
