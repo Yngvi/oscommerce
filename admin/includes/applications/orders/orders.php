@@ -212,7 +212,7 @@
           $email_body .= sprintf($osC_Language->get('email_body_status'), $orders_status_array[$data['status_id']]) . "\n\n" .
                          $osC_Language->get('email_body_contact');
 
-          osc_email($Qorder->value('customers_name'), $Qorder->value('customers_email_address'), sprintf($osC_Language->get('email_subject'), STORE_NAME), $email_body, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
+          osc_email($Qorder->value('customers_name'), $Qorder->value('customers_email_address'), sprintf($osC_Language->get('email_subject'), STORE_NAME), $this->_encode_body($email_body), STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
         }
 
         $Qupdate = $osC_Database->query('insert into :table_orders_status_history (orders_id, orders_status_id, date_added, customer_notified, comments) values (:orders_id, :orders_status_id, now(), :customer_notified, :comments)');
@@ -240,6 +240,12 @@
       $osC_Database->rollbackTransaction();
 
       return false;
+    }
+	/*    Better ISO/UTF8 email function  */
+    function _encode_body ($str) { 
+    return str_replace ( array ("\x5c\x6e"),        //linefeed command characters "\n"
+                        array ("\x0d\x0a"),         // convert "\n" real linefeed LF
+                                $str);
     }
   }
 ?>
