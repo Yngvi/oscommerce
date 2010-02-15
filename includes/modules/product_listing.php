@@ -30,8 +30,7 @@
     if ($value > 0) $column_list[] = $key;
   }
 
-  if ( ($Qlisting->numberOfRows() > 0) &&
-       ($Qlisting->numberOfRows() <= MAX_DISPLAY_PRODUCTS_NEW ) &&
+  if ( ($Qlisting->numberOfRows() > MAX_DISPLAY_PRODUCTS_NEW) &&
        ( (PREV_NEXT_BAR_LOCATION == '1') || (PREV_NEXT_BAR_LOCATION == '3') ) ) {
 ?>
 
@@ -185,8 +184,7 @@
 </div>
 
 <?php
-  if ( ($Qlisting->numberOfRows() > 0) &&
-       ($Qlisting->numberOfRows() <= MAX_DISPLAY_PRODUCTS_NEW ) &&
+  if ( ($Qlisting->numberOfRows() >= MAX_DISPLAY_PRODUCTS_NEW ) &&
        ((PREV_NEXT_BAR_LOCATION == '2') || (PREV_NEXT_BAR_LOCATION == '3')) ) {
 ?>
 
