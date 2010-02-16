@@ -297,7 +297,7 @@
         }
 
         foreach ( $products_delete as $id ) {
-          osC_Products_Admin::remove($id);
+          osC_Products_Admin::delete($id);
         }
 
         osC_Cache::clear('categories');
